@@ -1,4 +1,4 @@
-package domain.model;
+package com.yatzy.domain.model;
 
 public enum ScoreCategory {
     YATZY,

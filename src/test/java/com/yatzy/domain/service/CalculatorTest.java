@@ -1,35 +1,36 @@
-package domain.service;
+package com.yatzy.domain.service;
 
-import domain.model.Roll;
-import org.assertj.core.api.Assertions;
+import com.yatzy.domain.model.Roll;
+import com.yatzy.domain.model.ScoreCategory;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
+
 class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
+    Calculator calculator = new Calculator();
 
-    /**
-     * @Test public void verify_that_calculator_execute_all_score_categories() {
-     * Calculator mockecCalculator = mock(Calculator.class);
-     * Roll first_roll = new Roll(6, 5, 4, 3, 2);
-     * mockecCalculator.execute(first_roll);
-     * verify(mockecCalculator, times(1)).;
-     * <p>
-     * }
-     **/
+
     @Test
     public void execute_calculate_every_score_category() {
-        Roll first_roll = new Roll(3, 3, 4, 4, 4);
-        Roll second_roll = new Roll(1, 2, 3, 4, 5);
-        calculator.execute(first_roll);
-        calculator.execute(second_roll);
-        Assertions.assertThat(first_roll.scores().values().toArray()).containsExactlyInAnyOrder(new Integer[]{0, 6, 18, 0, 0, 0, 0, 0, 0, 14, 12, 18, 8, 12, 0});
-        Assertions.assertThat(second_roll.scores().values().toArray()).containsExactlyInAnyOrder(new Integer[]{0, 3, 0, 0, 2, 0, 1, 0, 5, 0, 0, 15, 0, 4, 15});
+        Roll roll = new Roll(1, 2, 3, 4, 5);
+        calculator.execute(roll);
+        assertEquals(roll.scores().get(ScoreCategory.YATZY), 0);
+        assertEquals(roll.scores().get(ScoreCategory.CHANCE), 15);
+        assertEquals(roll.scores().get(ScoreCategory.ONES), 1);
+        assertEquals(roll.scores().get(ScoreCategory.TWOS), 2);
+        assertEquals(roll.scores().get(ScoreCategory.THREES), 3);
+        assertEquals(roll.scores().get(ScoreCategory.FOURS), 4);
+        assertEquals(roll.scores().get(ScoreCategory.FIVES), 5);
+        assertEquals(roll.scores().get(ScoreCategory.SIXES), 0);
+        assertEquals(roll.scores().get(ScoreCategory.PAIR), 0);
+        assertEquals(roll.scores().get(ScoreCategory.TWO_PAIR), 0);
+        assertEquals(roll.scores().get(ScoreCategory.THREE_OF_A_KIND), 0);
+        assertEquals(roll.scores().get(ScoreCategory.FOUR_OF_A_KIND), 0);
+        assertEquals(roll.scores().get(ScoreCategory.SMALL_STRAIGHT), 15);
+        assertEquals(roll.scores().get(ScoreCategory.LARGE_STRAIGHT), 0);
+        assertEquals(roll.scores().get(ScoreCategory.FULL_HOUSE), 0);
     }
 
     @Test
