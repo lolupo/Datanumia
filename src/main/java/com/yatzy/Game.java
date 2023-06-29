@@ -2,8 +2,6 @@ package com.yatzy;
 
 import com.yatzy.domain.model.Roll;
 import com.yatzy.domain.service.Calculator;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -12,8 +10,6 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-@Configuration
-@ComponentScan
 @Command(name = "Yatzy", mixinStandardHelpOptions = true, description = "Play Yatzy")
 public class Game implements Runnable {
 

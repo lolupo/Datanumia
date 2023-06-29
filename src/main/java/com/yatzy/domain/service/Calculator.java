@@ -2,7 +2,6 @@ package com.yatzy.domain.service;
 
 import com.yatzy.domain.model.Roll;
 import com.yatzy.domain.model.ScoreCategory;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +9,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Component
 public class Calculator {
 
     public void execute(Roll roll) {
